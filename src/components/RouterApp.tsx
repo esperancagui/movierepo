@@ -11,6 +11,7 @@ export const RouterApp = () => (
         <Route path="/" element={<Home />} />
         <Route path="/movies/:movieId" element={<MovieDetails />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>
   </FavoritesProvider>
