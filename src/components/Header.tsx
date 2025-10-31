@@ -4,7 +4,7 @@ import { Search } from "./Search";
 import { TbMovie } from "react-icons/tb";
 
 
-export const Header = () => {
+export const Header = ({ onSearch }: { onSearch?: (query: string) => void }) => {
     return (
         <header className="sticky top-0 left-0 z-50 w-full flex flex-wrap items-center justify-between gap-2 p-5 bg-neutral-900/60 backdrop-blur-sm shadow-lg text-red-500">
             <Link to={"/"} className="flex items-center gap-2 min-w-0">
@@ -16,12 +16,11 @@ export const Header = () => {
 
             {/* make the search grow/shrink and allow truncation */}
             <div className="flex-1 min-w-0 px-2">
-                {/* ensure Search renders an input that can be full width (w-full) */}
-                <Search />
+                {onSearch && <Search onSearch={onSearch} />}
             </div>
 
             <nav className="flex items-center gap-2">
-                <Link to={""} className="shrink-0">
+                <Link to={"/favorites"} className="shrink-0">
                     <GoStarFill className="text-2xl" />
                 </Link>
             </nav>
