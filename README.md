@@ -1,73 +1,200 @@
-# React + TypeScript + Vite
+# 🎬 MovieRepo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive movie discovery application built with React, TypeScript, and Vite. Browse popular movies, search through collections, save favorites, and explore detailed movie information powered by The Movie Database (TMDB) API.
 
-Currently, two official plugins are available:
+![MovieRepo Preview](https://via.placeholder.com/800x400?text=MovieRepo+Preview)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- 🎥 **Browse Popular Movies** - Discover trending and popular movies
+- 🔍 **Real-time Search** - Filter movies instantly as you type
+- ⭐ **Favorites System** - Save your favorite movies with localStorage persistence
+- 📱 **Fully Responsive** - Optimized for desktop, tablet, and mobile devices
+- 🌙 **Dark Theme** - Beautiful gradient dark UI with glassmorphism effects
+- ⚡ **Fast & Modern** - Built with Vite for lightning-fast performance
+- 🎨 **Smooth Animations** - Engaging hover effects and transitions
+- 📄 **Detailed Movie Pages** - View synopsis, ratings, release dates, and more
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## 🚀 Live Demo
 
-## Expanding the ESLint configuration
+[View Live Demo](https://mymovierepo.vercel.app)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Frontend Framework:** React 18
+- **Language:** TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **Routing:** React Router DOM
+- **HTTP Client:** Axios
+- **Icons:** React Icons
+- **API:** The Movie Database (TMDB) API
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📋 Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Before you begin, ensure you have:
+
+- Node.js (v18 or higher)
+- npm or yarn package manager
+- TMDB API Key ([Get one here](https://www.themoviedb.org/settings/api))
+
+## 🔧 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/esperancagui/movierepo.git
+   cd movierepo
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Set up environment variables**
+   
+   Create a `.env` file in the root directory:
+   ```env
+   VITE_TMDB_API_KEY=your_api_key_here
+   ```
+
+4. **Start development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. **Open your browser**
+   
+   Navigate to `http://localhost:5173`
+
+## 📦 Build for Production
+
+```bash
+npm run build
+# or
+yarn build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Preview production build:
+```bash
+npm run preview
+# or
+yarn preview
 ```
+
+## 🌐 Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub/GitLab/Bitbucket
+2. Import project on [Vercel](https://vercel.com)
+3. Add environment variable: `VITE_TMDB_API_KEY`
+4. Deploy! 🚀
+
+The `vercel.json` configuration is already set up for SPA routing.
+
+### Other Platforms
+
+For Netlify, add a `_redirects` file:
+```
+/*    /index.html   200
+```
+
+## 📂 Project Structure
+
+```
+movierepo/
+├── public/             # Static assets
+├── src/
+│   ├── components/     # React components
+│   │   ├── Container.tsx
+│   │   ├── Header.tsx
+│   │   ├── Home.tsx
+│   │   ├── MovieCard.tsx
+│   │   ├── MovieDetails.tsx
+│   │   ├── MovieList.tsx
+│   │   ├── Search.tsx
+│   │   └── ...
+│   ├── contexts/       # React contexts
+│   │   └── FavoritesContext.tsx
+│   ├── hooks/          # Custom hooks
+│   │   └── useMovies.ts
+│   ├── lib/            # Utilities and API clients
+│   │   └── client.ts
+│   ├── types/          # TypeScript types
+│   │   └── Movie.ts
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+├── .env                # Environment variables (not committed)
+├── vercel.json         # Vercel configuration
+├── tailwind.config.js  # Tailwind CSS configuration
+├── tsconfig.json       # TypeScript configuration
+└── package.json
+```
+
+## 🎨 Features in Detail
+
+### Movie Browsing
+- Grid layout with responsive columns (1-3 depending on screen size)
+- Smooth hover animations with scale effects
+- Gradient overlays showing movie titles and ratings
+- Skeleton loading states for better UX
+
+### Search Functionality
+- Real-time filtering of loaded movies
+- Responsive search bar with mobile-optimized placeholder
+- Debounced search to prevent excessive filtering
+
+### Favorites System
+- Add/remove movies from favorites with one click
+- Persistent storage using localStorage
+- Dedicated favorites page
+- Visual feedback for favorited movies
+
+### Movie Details Page
+- Hero section with backdrop image
+- Sticky poster on scroll (desktop)
+- Rating visualization with star icons
+- Synopsis, popularity, and release date
+- Responsive grid layout
+
+## 🔑 Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `VITE_TMDB_API_KEY` | Your TMDB API key | Yes |
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [The Movie Database (TMDB)](https://www.themoviedb.org/) for the amazing API
+- [React Icons](https://react-icons.github.io/react-icons/) for the icon library
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
+
+## 📧 Contact
+
+Guilherme Esperança - [@esperancagui](https://github.com/esperancagui)
+
+Project Link: [https://github.com/esperancagui/movierepo](https://github.com/esperancagui/movierepo)
+
+---
+
+⭐ Star this repository if you found it helpful!
